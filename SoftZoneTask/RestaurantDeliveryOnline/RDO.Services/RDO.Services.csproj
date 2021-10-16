@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="FluentValidation" Version="10.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RDO.Core\RDO.Core.csproj" />
+    <ProjectReference Include="..\RDO.Infrastructure\RDO.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

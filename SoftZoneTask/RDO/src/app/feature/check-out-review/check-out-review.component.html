@@ -1,0 +1,90 @@
+<main style="background-color: white !important;">
+    <div class="container">
+    <div class="row m-r-0 m-l-0 p-l-20 " style=" left: 200px;">
+        <div class="col-md-12">
+            <u><b><h3>Your Data</h3></b></u>
+        </div>
+    </div>
+
+    <div class="row m-r-0 m-l-0 p-20" style="text-align: center;">
+        <div class="col-md-3 p-l-5 " style="min-width: 25%;">
+            <i class="fa fa-user" style="color: orange; vertical-align: middle !important;"></i> &nbsp; <b>Name</b>
+        </div>
+
+        <div class="col-md-3" style="min-width: 25%;">
+            <i class="fa fa-envelope" style="color: orange; vertical-align: middle !important;"></i> &nbsp;<b>Email</b>
+        </div>
+
+        <div class="col-md-3" style="min-width: 25%;">
+            <i class="fa fa-phone" style="color: orange; vertical-align: middle !important;"></i> &nbsp; <b>Phone</b>
+        </div>
+        <div class="col-md-3" style="min-width: 25%;">
+            <i class="fa fa-map-marker" style="color: orange; vertical-align: middle !important;"></i>
+            &nbsp;<b>Addres</b>
+        </div>
+
+    </div>
+    <div class="row m-r-0 m-l-0" style="text-align: center;">
+        <div class="col-md-3" style="min-width: 25%;">
+            {{order?.customer?.name}}
+        </div>
+
+        <div class="col-md-3" style="min-width: 25%;">
+            {{order?.customer?.email}}
+        </div>
+        <div class="col-md-3" style="min-width: 25%;">
+            {{order?.customer?.phone}}
+        </div>
+        <div class="col-md-3" style="min-width: 25%;">
+            {{order?.customer?.address}}
+        </div>
+
+    </div>
+    <br>
+
+    <table class="table table-bordered" style="text-align: center;">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">PRODUCT</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">QUANTITY</th>
+                <th scope="col">TOTAL</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let prod of order?.orderProducts">
+                <td style="max-width:100px !important"><img src="{{imageURL + prod?.product?.image}}"
+                        style="max-width: 10%;max-height:10%; align-items: center; border-radius: 20px;"></td>
+                <td>{{prod.product.name}}</td>
+                <td>{{prod.product.price}}</td>
+                <td>
+                    <button type="button" id="plus{{prod?.product?.id}}" (click)="increaseProductQuantity(prod)">+</button>
+                    <span id="span{{prod?.product?.id}}">{{prod.quantity}}</span>
+                    <button type="button" id="minus{{prod?.product?.id}}" (click)="decreaseProductQuantity(prod)"
+                        [disabled]="prod.quantity==1">-</button>
+                </td>
+                <td>{{prod.totalPrice}}</td>
+                <td><i class="fa fa-times" style="color: orange; vertical-align: middle !important;"
+                        (click)="removeProduct(prod)"></i></td>
+            </tr>
+        </tbody>
+        <br>
+        <br>
+
+        <thead>
+            <tr>
+                <th>TOTAL</th>
+                <th>{{order?.totalPrice}}</th>
+            </tr>
+        </thead>
+    </table>
+    <br>
+    <!-- <button class="btn btn-success btn-lg float-left" type="submit" (click)="back()">Back</button>
+    <button class="btn btn-success btn-lg float-right" type="submit" (click)="checkout()">CheckOut</button> -->
+    <input type="submit" value="Cancel"  class="btn float-left" (click)="back()">
+    <input type="submit" value="CheckOut" class="btn float-right" (click)="checkout()">
+</div>
+</main>

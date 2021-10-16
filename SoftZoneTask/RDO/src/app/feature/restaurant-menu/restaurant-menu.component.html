@@ -1,0 +1,75 @@
+<!-- <header class="row tm-welcome-section">
+</header>
+<main>
+    <div class="row tm-gallery">
+        <div id="tm-gallery-page-pizza" class="tm-gallery-page">
+            <div *ngFor="let rest of rests">
+                <article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item"  >
+                    <figure>
+
+                        <figcaption>
+                            <input type="checkbox" id="Check{{rest.id}}" (click)="AddToCart($event,rest)"/>
+                            <label for="cb1"><img src="{{imageURL + rest.image}}" /></label>
+                            <p class="tm-gallery-description" style="text-align: center;">{{rest.description}}</p>
+                            <p class="tm-gallery-price" style="text-align: center;">${{rest.price}}</p>
+                            <div class="custom-control custom-checkbox mb-3">
+                            </div>
+                        </figcaption>
+                    </figure>
+                </article>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="NextStep()">Next</button>
+    </div>
+
+</main>
+
+
+
+
+
+
+<script src="../../../assets/js/jquery.min.js"></script>
+<script src="../../../assets/js/parallax.min.js"></script>
+<script>
+$(document).ready(function(){
+    // Handle click on paging links
+    $('.tm-paging-link').click(function(e){
+        e.preventDefault();
+        
+        var page = $(this).text().toLowerCase();
+        $('.tm-gallery-page').addClass('hidden');
+        $('#tm-gallery-page-' + page).removeClass('hidden');
+        $('.tm-paging-link').removeClass('active');
+        $(this).addClass("active");
+    });
+});
+</script> -->
+
+<main style="background-color: white !important; align-items: center;">
+    <header class="row tm-welcome-section">
+    </header>
+    <div class="container">
+        <div *ngFor="let rest of rests" class="row m-r-0 m-l-0 p-20" style="float: right;">
+            <div class="gallery">
+                <a target="_blank">
+                    <img src="{{imageURL + rest.image}}" alt="Cinque Terre" width="600" height="400">
+                </a>
+                <h2>{{rest.name}}</h2>
+                <div class="desc">{{rest.description}}</div>
+                <input type="checkbox" id="Check{{rest.id}}" (click)="AddToCart($event,rest)"/>
+            </div>
+        </div>
+        <br>
+        <div class="row" style="align-items: center; text-align:center; width:100%;">
+            <mat-paginator #paginator [length]="queryResult.totalItems" [pageIndex]="queryObject.page - 1"
+            showFirstLastButtons [pageSize]="queryObject.pageSize" (page)="onPageChange($event.pageIndex)"
+            hidePageSize="true">
+        </mat-paginator>
+        </div>
+        <input type="submit" value="Next" class="btn float-right" [disabled]="products.length==0" (click)="NextStep()">
+
+    </div>
+   
+
+</main>

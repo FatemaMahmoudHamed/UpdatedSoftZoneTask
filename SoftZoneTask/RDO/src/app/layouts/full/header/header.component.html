@@ -1,0 +1,22 @@
+<!-- ============================================================== -->
+<!-- Notification - style you can find in header.scss -->
+<!-- ============================================================== -->
+<!-- <button mat-icon-button class="m-r-10" class="Notifications">
+  <mat-icon>notifications</mat-icon>
+  <div class="notify">
+    <span class="heartbit"></span>
+  </div>
+</button> -->
+
+<!-- ============================================================== -->
+<!-- Profile - style you can find in header.scss -->
+<!-- ============================================================== -->
+<a [matMenuTriggerFor]="profile" class="font-16">
+  <i class="fa fa-caret-down font-12 m-l-10"></i>
+  <span class="font-14 m-l-10">اهلا </span>
+</a>
+<button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5">
+  <img src="assets/images/users/2.png" alt="user" class="profile-pic">
+</button>
+<mat-menu #profile="matMenu" class="mymegamenu">
+</mat-menu>
